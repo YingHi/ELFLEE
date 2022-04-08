@@ -12,7 +12,6 @@ namespace MuSeoun_Engine
 	private :
 		bool _isGameRunning;	
 		MConsoleRenderer cRenderer;
-		double count; // 초 세는거 (타임포인트 더하는 변수) 1초인지 아닌지 카운트
 		double FPS; // 출력용 함수
 		chrono::system_clock::time_point startRenderTimePoint;
 		chrono::duration<double> renderDuration;
@@ -42,7 +41,6 @@ namespace MuSeoun_Engine
 	private :
 		void Initialize()
 		{
-			FPS = 0;
 		}
 		void Release() 
 		{
@@ -50,22 +48,10 @@ namespace MuSeoun_Engine
 
 		void Input()
 		{
-			count += renderDuration.count();
-			FPS = 1.0 / count;
-
+			FPS = 1.0 / renderDuration.count();
 			string fps = "FPS : " + to_string(FPS);
 			cRenderer.DrawString(fps);
-			count = 0;
 			startRenderTimePoint = chrono::system_clock::now();
-		/*	if (GetAsyncKeyState(VK_SPACE) & 0x8000 || GetAsyncKeyState(VK_SPACE) & 0x8001)
-			{ 
-		
-			}
-			else 
-			{
-			
-			}*/
-
 		}
 		void Update()
 		{
@@ -75,7 +61,6 @@ namespace MuSeoun_Engine
 		{
 			cRenderer.Clear();
 			cRenderer.MoveCursor(10, 20);
-
 			renderDuration = chrono::system_clock::now() - startRenderTimePoint;
 			
 		}
