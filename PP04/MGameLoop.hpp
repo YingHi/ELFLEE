@@ -1,4 +1,5 @@
 #pragma once
+
 #include <chrono>
 #include <thread>
 #include "MConsolUtil.hpp"
@@ -12,9 +13,8 @@ namespace MuSeoun_Engine
 	private :
 		bool _isGameRunning;	
 		MConsoleRenderer cRenderer;
-		double FPS; // 출력용 함수
-		chrono::system_clock::time_point startRenderTimePoint;
-		chrono::duration<double> renderDuration;
+		Player p;
+		Enemy e;
 		
 	public :
 		MGameLoop() 	{	_isGameRunning = false;		}
@@ -41,6 +41,7 @@ namespace MuSeoun_Engine
 	private :
 		void Initialize()
 		{
+
 		}
 		void Release() 
 		{
@@ -48,21 +49,27 @@ namespace MuSeoun_Engine
 
 		void Input()
 		{
-			FPS = 1.0 / renderDuration.count();
-			string fps = "FPS : " + to_string(FPS);
-			cRenderer.DrawString(fps);
-			startRenderTimePoint = chrono::system_clock::now();
+			if (GetAsyncKeyState(VK_SPACE) & 0x8000 || GetAsyncKeyState(VK_SPACE) & 0x8001)
+			{
+				p.isKeyPressed();
+			}
+			else
+			{
+				p.isKeyUnpressed();
+			}
 		}
 		void Update()
 		{
-			
+			e.charge();
+			if (e.point_x < 0.5f) {
+				e.Respawn();
+			}
 		}
 		void Render()
 		{
 			cRenderer.Clear();
-			cRenderer.MoveCursor(10, 20);
-			renderDuration = chrono::system_clock::now() - startRenderTimePoint;
-			
+			int A = cRenderer.Draw();
+			if (A == 0) Stop();
 		}
 
 
