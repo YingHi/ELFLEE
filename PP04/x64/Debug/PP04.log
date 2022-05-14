@@ -1,4 +1,4 @@
 ﻿  main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': 매크로 재정의
-C:\Users\TEMP.PC7207_03\source\repos\ELFLEE\packages\glfw.3.3.7\build\native\include\GLFW\glfw3.h(123): message : 'APIENTRY'의 이전 정의를 참조하십시오.
-  PP04.vcxproj -> C:\Users\TEMP.PC7207_03\source\repos\ELFLEE\x64\Debug\PP04.exe
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': 매크로 재정의
+C:\Users\min90\source\repos\ELFLEE\packages\glfw.3.3.7\build\native\include\GLFW\glfw3.h(123): message : 'APIENTRY'의 이전 정의를 참조하십시오.
+LINK : fatal error LNK1104: 'C:\Users\min90\source\repos\ELFLEE\packages\glfw.3.3.7\build\native\lib\dynamic\v143\x64\glfw3dll.lib' 파일을 열 수 없습니다.

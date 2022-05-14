@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string>
 #include <Windows.h>
-
 #pragma comment(lib,"OpenGL32")
 
 using namespace std;
@@ -15,7 +14,7 @@ namespace MuSeoun_Engine
 		float point_x = 0, point_y = 0, size_h = 0, size_w = 0;
 		string name;
 	};
-	class Player : Unit {
+	class Player : public Unit {
 	public:
 		Player() {
 			name = "Player";
@@ -33,7 +32,7 @@ namespace MuSeoun_Engine
 		}
 	};
 
-	class Enemy : Unit {
+	class Enemy : public Unit {
 	public:
 		Enemy() {
 			name = "Enemy";
@@ -90,9 +89,15 @@ namespace MuSeoun_Engine
 		{
 			if (!glfwWindowShouldClose(window))
 			{
+				if (A.name == "Player") {
+
+				}
 				glBegin(GL_TRIANGLE_STRIP);
 				glColor3f(0.0f, 0.0f, 1.0f);
-				//glVertex2f(a[0], a[1]);
+				glVertex2f(A.point_x, A.point_y);
+				glVertex2f((A.point_x+A.size_w), A.point_y);
+				glVertex2f(A.point_x, (A.point_y + A.size_h));
+				glVertex2f((A.point_x + A.size_w), (A.point_y + A.size_h));
 				glEnd();
 
 				glfwSwapBuffers(window);

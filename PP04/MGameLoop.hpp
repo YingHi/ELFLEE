@@ -4,6 +4,7 @@
 #include <thread>
 #include "MConsolUtil.hpp"
 
+
 using namespace std;
 
 namespace MuSeoun_Engine
@@ -68,7 +69,7 @@ namespace MuSeoun_Engine
 		void Render()
 		{
 			cRenderer.Clear();
-			int A = cRenderer.Draw();
+			int A = cRenderer.Draw(p);
 			if (A == 0) Stop();
 		}
 
